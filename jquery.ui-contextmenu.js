@@ -40,6 +40,7 @@ $.widget("moogle.contextmenu", {
 		ignoreParentSelect: true, // Don't trigger 'select' for sub-menu parents
 		menu: null,           // selector or jQuery pointing to <UL>, or a definition hash
 		position: null,       // popup positon
+		zIndex: 1,			  // Force the z-index of this menu
 		preventContextMenuForPopup: false, // prevent opening the browser's system
 										   // context menu on menu entries
 		preventSelect: false, // disable text selection of target
@@ -156,6 +157,7 @@ $.widget("moogle.contextmenu", {
 		this.$menu
 			.hide()
 			.addClass(opts.addClass)
+			.css('z-index',opts.zIndex)
 			// Create a menu instance that delegates events to our widget
 			.menu($.extend(true, {}, opts.uiMenuOptions, {
 				blur: $.proxy(opts.blur, this),
